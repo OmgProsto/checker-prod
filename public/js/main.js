@@ -8,20 +8,39 @@
 /***/ (() => {
 
 submitFooterForm = function submitFooterForm(url) {
-  var inputName = document.getElementById("input__name").value;
-  var inputPhone = document.getElementById("input__phone").value;
+  var inputName = document.getElementById("input__name");
+  var inputPhone = document.getElementById("input__phone");
+  var csrf = document.querySelector('meta[name="csrf-token"]').content;
+  console.log(csrf);
   var data = {
-    "name": inputName,
-    "phone": inputPhone
+    "name": inputName.value,
+    "phone": inputPhone.value
   };
-  var jsonData = JSON.stringify(data);
+  data = JSON.stringify(data);
+  console.log(data);
+  console.log(url);
   fetch(url, {
     method: 'POST',
-    body: jsonData
+    headers: {
+      'X-CSRF-TOKEN': csrf,
+      'Accept': 'application/json',
+      'Content-type': 'application/json'
+    },
+    body: data
   }).then(function (response) {
+    if (response.status != 200) {
+      var error = new Error(response.statusText);
+      error.response = response;
+      throw error;
+    }
+
     alert("малява нарисована");
+    console.log(response);
+    inputName.value = '';
+    inputPhone.value = '';
   })["catch"](function (error) {
-    alert("ошибка улыбка");
+    alert("ошибка улыбка ");
+    console.log(error);
   });
   return false;
 };

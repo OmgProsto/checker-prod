@@ -8,9 +8,15 @@ class SendEmailController extends Controller
 {
     public function __invoke(Request $request)
     {
+        $request->validate([
+            'name' => 'required|string',
+            'phone' => 'required|string'
+        ]);
+
         return response(
             [
-                'status' => $request->name
+                'name' => $request->name,
+                'phone' => $request->phone
             ],
         );
     }
