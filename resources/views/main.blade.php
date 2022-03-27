@@ -27,20 +27,11 @@
                         <div class="calendar">Пн-Сб: 9:00-18:00</div>
                     </div>
                 </div>
-                
-                <div  x-data="{ open: false }">
-                    <div class="header__button"  x-on:click="open = ! open">
-                        <a class="text__button">Заказать звонок</a>
-                    </div>
-                    <div x-show="open" class="form__header">
-                        <form action="" method="post" onsubmit="return submitFooterForm('http://romaloh.kz');">
-                            <input type="text" id = "input__name1"class="input__footer" placeholder="имя емае">
-                            <input type="text" id = "input__phone1"class="input__footer" placeholder="мобила">
-                             <button class="footer__button">Получить консультацию</button>
-                        </form>
-                    </div>
+
+                <div class="header__button">
+                    <a href="#form" class="text__button">Заказать звонок</a>
                 </div>
-                
+            
             </div>
         </div>
     </header>
@@ -51,7 +42,7 @@
             <div class="wrapper">
                 <h1 class="intro__title">БЕЗОПАСНАЯ СДЕЛКА</h1>
                 <p class="intro__subtitle">Сервис по проверке продавца и покупателя и оценке рисков сделки недвижимости</p>
-                <a>
+                <a href="#form" class="text__button">
                     <div class="intro__button">Получить консультацию</div>
                 </a>
                 <img src="{{asset('/img/pic.svg')}}" alt="" class="pic">
@@ -88,7 +79,9 @@
                                         <li>Готовностость: 3 минуты</li>
                                         <li>Нужен только паспорт субъекта</li>
                                     </ul>
-                                    <div class="quest__buttons">Заказать отчет</div>
+                                    <div href="#form" class="quest__buttons text__button">
+                                        <a href="#form" class="text__button">Заказать отчет</a>
+                                    </div>
                                 </li>
                             </ul>
                         </li>
@@ -119,7 +112,9 @@
                                         <li>Готовностость: 3 минуты</li>
                                         <li>Нужен только паспорт субъекта</li>
                                     </ul>
-                                    <div class="quest__buttons">Заказать отчет</div>
+                                    <div class="quest__buttons">
+                                        <a href="#form" class="text__button">Заказать отчет</a>s
+                                    </div>
                                 </li>
                             </ul>
                         </li>
@@ -146,7 +141,9 @@
                                         <li>Готовностость: 2 часа</li>
                                         <li>Нужен только паспорт субъекта</li>
                                     </ul>
-                                    <div class="quest__buttons">Заказать отчет</div>
+                                    <div class="quest__buttons">
+                                        <a href="#form" class="text__button">Заказать отчет</a>
+                                    </div>
                                 </li>
                             </ul>
                         </li>
@@ -200,9 +197,11 @@
                             <li>Также мы готовы разработать проверку специально для Вашего бизнеса</li>
                         </ul>
                     </div>
-                    <div class="form__footer">
-                        <input type="text" id = "input__name"class="input__footer" placeholder="имя емае">
-                        <input type="text" id = "input__phone"class="input__footer" placeholder="мобила">
+                    <div id="form" class="form__footer">
+                        <label id="labelName" style="display: none; font-size: 13px; color:red">Обязательное поле</label>
+                        <input type="text" id = "input__name"class="input__footer" placeholder="ФИО">
+                        <label id="labelPhone" style="display: none; font-size: 13px; color:red">Обязательное поле</label>
+                        <input type="text" id = "input__phone"class="input__footer" placeholder="Тел. 8 (999) 999 99 99">
                         <button type="button" class="footer__button" onclick="submitFooterForm('{{$urlForm}}')">Получить консультацию</button>
                     </div>
                 </div>

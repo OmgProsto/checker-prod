@@ -63,6 +63,12 @@ body{
     min-width: 180px;
     padding-top: 14px;
 }
+.text__button{
+    cursor: pointer;
+    text-decoration: none;
+    color: #FFFFFF;
+}
+
 .form__header{
     margin-left: -17px;
 }

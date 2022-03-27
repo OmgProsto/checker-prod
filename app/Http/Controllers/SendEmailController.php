@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\OrderMail;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Http\Request;
 
 class SendEmailController extends Controller
@@ -12,6 +14,13 @@ class SendEmailController extends Controller
             'name' => 'required|string',
             'phone' => 'required|string'
         ]);
+
+        Mail::to('hasa-09@yandex.ru')->send(
+            new OrderMail(
+                $request->name,
+                $request->phone
+            )
+        );
 
         return response(
             [
